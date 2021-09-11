@@ -1,0 +1,43 @@
+App\User\UseCase\CreateUser\CreateUserDTO:
+    properties:
+        name:
+            - NotBlank:
+                normalizer: trim
+            - Length:
+                min: 8
+            - Regex:
+                pattern: '/^[a-z0-9]+$/'
+                message: Only lower case letters and digits are allowed for name.
+            - App\User\Validation\NotWithBannedWord: ~
+        email:
+            - NotBlank:
+                normalizer: trim
+            - Email:
+                normalizer: trim
+            - App\User\Validation\NotWithBannedEmailDomain: ~
+
+App\User\UseCase\UpdateUser\UpdateUserDTO:
+    properties:
+        name:
+            - NotBlank:
+                normalizer: trim
+                allowNull: true
+            - Length:
+                min: 8
+            - Regex:
+                pattern: '/^[a-z0-9]+$/'
+                message: Only lower case letters and digits are allowed for name.
+            - App\User\Validation\NotWithBannedWord: ~
+        email:
+            - NotBlank:
+                normalizer: trim
+                allowNull: true
+            - Email:
+                normalizer: trim
+            - App\User\Validation\NotWithBannedEmailDomain: ~
+        deleted:
+            - NotBlank:
+                normalizer: trim
+                allowNull: true
+            - DateTime:
+                format: Y-m-d\TH:i:sP
