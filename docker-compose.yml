@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/dev/php-cli/Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - users_test
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/var/www
+      - app_var:/var/www/var
+      - vendor:/var/www/vendor
+
+volumes:
+  app_var:
+  vendor:
+
+networks:
+  users_test:
