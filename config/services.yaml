@@ -16,10 +16,12 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+            - '../src/User/Entity/'
+            - '../src/User/Event/'
+            - '../src/User/Model/'
+            - '../src/User/DTO/'
+            - '../src/**/*Exception.php'
+            - '../src/**/*DTO.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
