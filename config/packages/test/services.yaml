@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\Integration\User\Doubles\:
+        resource: '../../../tests/Integration/User/Doubles/'
+
+    App\User\UseCase\UserUpdatesLogger: '@App\Tests\Integration\User\Doubles\MemoryUserUpdatesLogger'
+
+    App\User\Validation\BannedDomainsRepository: '@App\Tests\Integration\User\Doubles\BannedDomainsMemoryRepository'
+
+    App\User\Validation\BannedNamesRepository: '@App\Tests\Integration\User\Doubles\BannedNamesMemoryRepository'
